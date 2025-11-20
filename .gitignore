@@ -1,0 +1,27 @@
+# --- GLOBAL ---
+node_modules/
+dist/
+.env
+.env.local
+
+# --- Frontend (Vite / React) ---
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.DS_Store
+
+# --- Backend (.NET future) ---
+backend/bin/
+backend/obj/
+backend/appsettings.Development.json
+backend/.vs/
+backend/.idea/
+
+# --- OS Crap ---
+Thumbs.db
+.DS_Store
+
+# --- Docker (si tu ajoutes plus tard) ---
+data/
+database/
+logs/
