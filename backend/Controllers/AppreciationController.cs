@@ -1,10 +1,13 @@
 ﻿using backend.DTOs;
 using backend.Models;
+using backend.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers
 {
+    [Authorize]
     [Route("appreciations")]
     [ApiController]
     public class AppreciationController : ControllerBase
@@ -37,3 +40,4 @@ namespace backend.Controllers
             return Ok(list);
         }
     }
+}

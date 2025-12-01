@@ -1,5 +1,5 @@
 ﻿using backend.DTOs;
-using Microsoft.AspNetCore.Http;
+using backend.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers
@@ -31,7 +31,7 @@ namespace backend.Controllers
             return Ok(new LoginResponse
             {
                 Token = token,
-                MustChangePassword = user.MustChangePassword,
+                HasToChangePassword = user.HasToChangePassword,
                 UserId = user.Id,
                 Name = user.Name
             });
@@ -43,10 +43,11 @@ namespace backend.Controllers
             var user = await _userService.GetByIdAsync(request.UserId);
             if (user == null) return NotFound("Utilisateur introuvable");
 
-            _authService.SetPassword(user, request.NewPassword);
-            user.MustChangePassword = false;
+            await _userService.SetPasswordAsync(user, request.NewPassword);
+            user.HasToChangePassword = false;
 
             await _userService.UpdateAsync(user);
             return Ok("Mot de passe mis à jour");
         }
     }
+}

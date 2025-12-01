@@ -1,10 +1,13 @@
 ﻿using backend.DTOs;
 using backend.Models;
+using backend.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("users")]
     public class UserController : ControllerBase
@@ -24,7 +27,7 @@ namespace backend.Controllers
             {
                 Id = u.Id,
                 Name = u.Name,
-                Identifier = u.Identifier
+                Identifier = u.PhoneNumber
             }).ToList();
 
             return Ok(dto);

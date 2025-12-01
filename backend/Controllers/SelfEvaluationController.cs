@@ -1,8 +1,11 @@
 ﻿using backend.DTOs;
+using backend.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("self-evaluation")]
     public class SelfEvaluationController : ControllerBase
@@ -29,3 +32,4 @@ namespace backend.Controllers
             return Ok(selfEval);
         }
     }
+}
