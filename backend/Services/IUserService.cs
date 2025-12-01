@@ -9,5 +9,6 @@ namespace backend.Services
         Task<List<User>> GetAllAsync();
         Task UpdateAsync(User user);
         Task AddAsync(User user);
+        Task SetPasswordAsync(User user, string newPassword);
     }
 }

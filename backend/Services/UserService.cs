@@ -37,5 +37,13 @@ namespace backend.Services
             _db.Users.Add(user);
             await _db.SaveChangesAsync();
         }
+
+        public async Task SetPasswordAsync(User user, string newPassword)
+        {
+            var hasher = new Microsoft.AspNetCore.Identity.PasswordHasher<User>();
+            user.PasswordHash = hasher.HashPassword(user, newPassword);
+            _db.Users.Update(user);
+            await _db.SaveChangesAsync();
+        }
     }
 }

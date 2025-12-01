@@ -18,9 +18,5 @@ namespace backend.Services
             return result == PasswordVerificationResult.Success;
         }
 
-        public void SetPassword(User user, string password)
-        {
-            user.PasswordHash = _hasher.HashPassword(user, password);
-        }
     }
 }
